@@ -1,0 +1,478 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce mPAY24 Gateway v1.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-28 13:32+0100\n"
+"PO-Revision-Date: 2014-11-28 13:32+0100\n"
+"Last-Translator: Melanie Reichel <mr@datenwerk.at>\n"
+"Language-Team: datenwerk innovationsagentur GmbH <wordpressdev@datenwerk."
+"at>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: .\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:88 ../gateway-mpay24.php:92
+msgid ""
+"<strong>mPAY24 gateway is installed</strong> &#8211; Configure the setting "
+"to get started :)"
+msgstr ""
+"<strong>mPAY24 Gateway wurde installiert</strong> &#8211; Konfigurieren Sie "
+"die Einstellungen um zu starten :)"
+
+#: ../gateway-mpay24.php:89
+msgid "Payment Settings"
+msgstr "Zahlungsweisen"
+
+#: ../gateway-mpay24.php:93
+msgid "Checkout"
+msgstr "Kasse"
+
+#: ../gateway-mpay24.php:173
+msgid "Proceed to mPAY24"
+msgstr "Weiter zu mPAY24"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:175 ../gateway-mpay24.php:473
+msgid "mPAY24"
+msgstr "mPAY24"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:176 ../gateway-mpay24.php:474
+msgid "Online payment via mPAY24 payment page"
+msgstr "Online Zahlung über das mPAY24 Bezahlfenster"
+
+#: ../gateway-mpay24.php:245
+msgid "Woocommerce Settings"
+msgstr "Woocommerce Einstellungen"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:250
+msgid "Enable/Disable"
+msgstr "Aktivieren/ Deaktivieren"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:251
+msgid "Enable mPAY24"
+msgstr "mPAY24 aktivieren"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:257
+msgid "Title"
+msgstr "Titel"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:259
+msgid "This controls the title which the user sees during checkout."
+msgstr ""
+"Dies legt den Titel fest, welchen der Besucher während des Zahlungsvorganges "
+"sieht."
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:261
+msgid "Credit card"
+msgstr "Kreditkarte"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:264
+msgid "Description"
+msgstr "Beschreibung"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:266
+msgid "This controls the description which the user sees during checkout."
+msgstr "Dies aktiviert die Beschreibung, die der Kunde an der Kasse sieht."
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:268
+msgid "Pay with your credit card via mPAY24."
+msgstr "Bezahlen Sie mit Ihrer Kreditkarte über mPAY24."
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:271
+msgid "Thank you page text"
+msgstr "Text für Danke-Seite"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:273
+msgid ""
+"This controls the text which the user sees on the order thank you page above "
+"order details."
+msgstr ""
+"Dies aktiviert den Text, den der Kunde auf der Danke-Seite oberhalb der "
+"Bestelldetails sieht."
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:277
+msgid "Customer email text"
+msgstr "Text für Kunden Bestätigungsmail"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:279
+msgid ""
+"This controls the text which the user sees in order confirmation email below "
+"order table."
+msgstr ""
+"Dies aktiviert den Text, den der Kunde in der Bestätigungsmail unterhalb der "
+"Bestellungen sieht."
+
+#: ../gateway-mpay24.php:283
+msgid "mPAY24 Settings"
+msgstr "mPAY24 Einstellungen"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:288
+msgid "Username TEST"
+msgstr "Benutzername TEST"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:290
+msgid "This is the SOAP API username (without leading u) for test environment."
+msgstr ""
+"Dies ist der SOAP API Benutzername (ohne führendes u) für die Testumgebung."
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:295
+msgid "Password TEST"
+msgstr "Passwort TEST"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:297
+msgid "This is the SOAP API password for test environment."
+msgstr "Dies ist das SOAP API Passwort für die Testumgebung."
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:302
+msgid "Username PROD"
+msgstr "Benutzername PROD"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:304
+msgid "This is the SOAP API username (without leading u) for prod environment."
+msgstr ""
+"Dies ist der SOAP API Benutzername (ohne führendes u) für die "
+"Produktivumgebung."
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:309
+msgid "Password PROD"
+msgstr "Passwort PROD"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:311
+msgid "This is the SOAP API password for prod environment."
+msgstr "Dies ist das SOAP API Passwort für die Produktivumgebung."
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:316
+msgid "Test Mode"
+msgstr "Testmodus"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:317
+msgid "Enable Test Mode"
+msgstr "Entwicklungsmodus aktivieren"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:319
+msgid "Place the payment gateway in test mode."
+msgstr "Versetzt das Bezahlungssystem in den Testmodus."
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:324
+msgid "Debug Log"
+msgstr "Debug-Protokoll"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:325
+msgid "Enable logging"
+msgstr "Protokollierung aktivieren"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:327
+msgid ""
+"Log mPAY24 events inside <code>/wp-content/plugins/woocommerce/logs/</code>, "
+"since WC 2.2 to WC_LOG_DIR (default: <code>/wc-logs/</code>)"
+msgstr ""
+"Protokolliert mPAY24 Ereignisse nach <code>/wp-content/plugins/woocommerce/"
+"logs/</code>, seit WC 2.2 nach WC_LOG_DIR (Standard:  <code>/wc-logs/</code>)"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:332
+msgid "mPAY24 Payment Page Styling"
+msgstr "mPAY24 Bezahlfenster Styling"
+
+#: ../gateway-mpay24.php:337
+msgid "Language"
+msgstr "Sprache"
+
+#: ../gateway-mpay24.php:340
+msgid "auto with WPML"
+msgstr "auto mit WPML"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:341
+msgid "Bulgarian"
+msgstr "Bulgarisch"
+
+#: ../gateway-mpay24.php:342
+msgid "Chinese"
+msgstr "Chinesisch"
+
+#: ../gateway-mpay24.php:343
+msgid "Croatian"
+msgstr "Kroatisch"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:344
+msgid "Czech"
+msgstr "Tschechisch"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:345
+msgid "Dutch"
+msgstr "Niederländisch"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:346
+msgid "English"
+msgstr "Englisch"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:347
+msgid "French"
+msgstr "Französisch"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:348
+msgid "German"
+msgstr "Deutsch"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:349
+msgid "Hungarian"
+msgstr "Ungarisch"
+
+#: ../gateway-mpay24.php:350
+msgid "Italian"
+msgstr "Italienisch"
+
+#: ../gateway-mpay24.php:351
+msgid "Japanese"
+msgstr "Japanisch"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:352
+msgid "Polish"
+msgstr "Polnisch"
+
+#: ../gateway-mpay24.php:353
+msgid "Portuguese"
+msgstr "Portugiesisch"
+
+#: ../gateway-mpay24.php:354
+msgid "Romanian"
+msgstr "Rumänisch"
+
+#: ../gateway-mpay24.php:355
+msgid "Russian"
+msgstr "Russisch"
+
+#: ../gateway-mpay24.php:356
+msgid "Serbian"
+msgstr "Serbisch"
+
+#: ../gateway-mpay24.php:357
+msgid "Slovak"
+msgstr "Slowakisch"
+
+#: ../gateway-mpay24.php:358
+msgid "Slovenian"
+msgstr "Slowenisch"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:359
+msgid "Spanish"
+msgstr "Spanisch"
+
+#: ../gateway-mpay24.php:360
+msgid "Turkish"
+msgstr "Türkisch"
+
+#: ../gateway-mpay24.php:362
+msgid ""
+"This controls in which language the payment page is shown. If \"auto with "
+"WPML\" is set current user language is used (if avaiable on mPAY24 side, "
+"otherwise \"EN\"). WPML plugin required for \"auto with WPML\" option."
+msgstr ""
+"Dies kontrolliert in welcher Sprache das Bezahlfenster angezeigt wird. Wenn "
+"\"auto mit WPML\" gesetzt ist, wird die aktuell durch den Benutzer gewählte "
+"Sprache verwendet (wenn auf mPAY24-seitig vorhanden, sonst \"EN\"). WPML "
+"plugin ist erforderlich für die \"auto mit WPML\" Option."
+
+#: ../gateway-mpay24.php:367
+msgid "Page Background Color"
+msgstr "Seitenhintergrundfarbe"
+
+#: ../gateway-mpay24.php:368
+msgid "Background color of the payment page. Default"
+msgstr "Hintergrundfarbe des Bezahlfensters. Standard"
+
+#: ../gateway-mpay24.php:375
+msgid "Logo Styling"
+msgstr "Logo Styling"
+
+#: ../gateway-mpay24.php:376
+msgid "CSS rules for payment page logo image. Default"
+msgstr "CSS Regeln für das Logo im Bezahlfenster. Standard"
+
+#: ../gateway-mpay24.php:381
+msgid "Page Header Styling"
+msgstr "Seitenüberschrift Styling"
+
+#: ../gateway-mpay24.php:382
+msgid "CSS rules for payment page header. Default"
+msgstr "CSS Regeln für die Seitenüberschrift des Bezahlfensters. Standard"
+
+#: ../gateway-mpay24.php:387
+msgid "Page Caption Styling"
+msgstr "Seitentitel Styling"
+
+#: ../gateway-mpay24.php:388
+msgid "CSS rules for payment page caption. Default"
+msgstr "CSS Regeln für den Seitentitel des Bezahlfensters. Standard"
+
+#: ../gateway-mpay24.php:393
+msgid "Page Styling"
+msgstr "Seiten Styling"
+
+#: ../gateway-mpay24.php:394
+msgid "CSS rules for payment page box with inputs. Default"
+msgstr "CSS Regeln für den Eingabebereich im Bezahlfenster. Standard"
+
+#: ../gateway-mpay24.php:399
+msgid "Input Fields Styling"
+msgstr "Eingabefelder Styling"
+
+#: ../gateway-mpay24.php:400
+msgid "CSS rules for payment page input fields."
+msgstr "CSS Regeln für die Eingabefelder im Bezahlfenster."
+
+#: ../gateway-mpay24.php:405
+msgid "Drop Down Lists Styling"
+msgstr "Auswahllisten Styling"
+
+#: ../gateway-mpay24.php:406
+msgid "CSS rules for payment page drop down lists."
+msgstr "CSS Regeln für die Auswahllisten im Bezahlfenster."
+
+#: ../gateway-mpay24.php:411
+msgid "Buttons Styling"
+msgstr "Buttons Styling"
+
+#: ../gateway-mpay24.php:412
+msgid "CSS rules for payment page buttons."
+msgstr "CSS Regeln für die Buttons im Bezahlfenster."
+
+#: ../gateway-mpay24.php:417
+msgid "Errors Styling"
+msgstr "Fehler Styling"
+
+#: ../gateway-mpay24.php:418
+msgid "CSS rules for payment page error messages."
+msgstr "CSS Regeln für Fehlermeldungen im Bezahlfenster."
+
+#: ../gateway-mpay24.php:423
+msgid "Errors Header Styling"
+msgstr "Fehlerüberschrift Styling"
+
+#: ../gateway-mpay24.php:424
+msgid "CSS rules for payment page error heading."
+msgstr "CSS Regeln für Fehlerüberschrift im Bezahlfenster."
+
+#: ../gateway-mpay24.php:429
+msgid "Success Title Styling"
+msgstr "Titel auf Erfolgsseite Styling"
+
+#: ../gateway-mpay24.php:430
+msgid "CSS rules for payment success page title area."
+msgstr "CSS Regeln für den Seitentitel auf der Erfolgsseite im Bezahlfenster."
+
+#: ../gateway-mpay24.php:435
+msgid "Error Title Styling"
+msgstr "Titel auf Fehlerseite Styling"
+
+#: ../gateway-mpay24.php:436
+msgid "CSS rules for payment error page title area."
+msgstr "CSS Regeln für den Seitentitel auf der Fehlerseite im Bezahlfenster."
+
+#: ../gateway-mpay24.php:441
+msgid "Footer Styling"
+msgstr "Fußzeilen Styling"
+
+#: ../gateway-mpay24.php:442
+msgid "CSS rules for payment page footer area."
+msgstr "CSS Regeln für den Fußzeilenbereich im Bezahlfenster."
+
+#: ../gateway-mpay24.php:447
+msgid "Access Protection"
+msgstr "Zugriffsschutz"
+
+#: ../gateway-mpay24.php:449
+msgid ""
+"If your site has an access protection with .htaccess fill in the credentials "
+"to get the right status from mPAY24 during payment process. Please remove "
+"them as website is productive."
+msgstr ""
+"Falls Ihre Seite einen Zugriffsschutz via .htaccess hat, geben Sie hier die "
+"Zugangsdaten ein um den richtigen Status von mPAY24 während des "
+"Bezahlvorgangs zurückzubekommen. Bitte entfernen Sie diese Daten sobald die "
+"Website produktiv ist."
+
+#: ../gateway-mpay24.php:452
+msgid "Username .htaccess"
+msgstr "Benutzername .htaccess"
+
+#: ../gateway-mpay24.php:457
+msgid "Password .htaccess"
+msgstr "Passwort .htaccess"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:584
+msgid "TEST MODE ENABLED"
+msgstr "TEST MODUS AKTIVIERT"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:703
+msgid "mPAY24 payment completed"
+msgstr "mPAY24 Bezahlung abgeschlossen"
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:713 ../gateway-mpay24.php:717
+#: ../gateway-mpay24.php:723 ../gateway-mpay24.php:727
+#, php-format
+msgid "Payment %s via mPAY24."
+msgstr "Bezahlung %s über mPAY24."
+
+# @ wc-mpay24
+#: ../gateway-mpay24.php:719
+msgid "Payment failed via mPAY24."
+msgstr "Bezahlung über mPAY24 fehlgeschlagen."
+
+# @ wc-mpay24
+#~ msgid "This controls in which language the payment page is shown."
+#~ msgstr ""
+#~ "Dies aktiviert in welcher Sprache das mPAY24 Bezahlfenster angezeigt wird."
+
+#~ msgid "mPAY24 IPN Request Failure"
+#~ msgstr "mPAY24 IPN Anfrage fehlgeschlagen"

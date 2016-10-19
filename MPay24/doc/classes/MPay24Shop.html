@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta charset="utf-8"/>
+    <title>     &raquo; \MPay24Shop
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    <script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.js" type="text/javascript"></script>
+    <script src="../js/template.js" type="text/javascript"></script>
+    <script src="../js/prettify/prettify.min.js" type="text/javascript"></script>
+
+    <link rel="shortcut icon" href="../img/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span> <span class="icon-bar"></span>
+                <span class="icon-bar"></span> </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                                                </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graph_class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../errors.html"><i class="icon-list-alt"></i>&#160;Errors</a></li>
+                            <li><a href="../markers.html"><i class="icon-list-alt"></i>&#160;Markers</a></li>
+                            <li><a href="../deprecated.html"><i class="icon-list-alt"></i>&#160;Deprecated</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="go_to_top">
+        <a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>
+    </div>
+</div>
+
+<div id="___" class="container">
+    <noscript>
+        <div class="alert alert-warning">
+            Javascript is disabled; several features are only available if Javascript is enabled.
+        </div>
+    </noscript>
+
+        
+    <div class="row">
+        <div class="span4">
+            <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+                <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+            </div>
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">
+                    <i class="icon-custom icon-method"></i> Methods
+                    <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                </li>
+                <li class="nav-header protected">» Protected
+                    <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                </li>
+                <li class="nav-header private">» Private
+                    <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </ul>
+                </li>
+                <li class="nav-header">
+                    <i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+                                            </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="span8">
+            <div class="element class">
+                <h1>MPay24Shop</h1>
+                <small style="display: block; text-align: right">
+                                            Extends <a href="../classes/Transaction.html">\Transaction</a>
+                                                        </small>
+                <p class="short_description">The abstract MPay24Shop class provides abstract functions, which are used from the other functions in order to make a payment or a request to mPAY24</p>
+                <div class="details">
+                    <div class="long_description">
+                        <p>TYPE:                PARAMETER -         VALUE(s), description</p>
+
+<ul>
+<li>STRING:            STATUS -             OK, ERROR</li>
+<li>STRING:            OPERATION -          CONFIRMATION</li>
+<li>STRING:            TID -                length &lt;= 32</li>
+<li>STRING:            TRANSACTION_STATUS - RESERVED, BILLED, REVERSED, CREDITED, ERROR</li>
+<li>INT:               PRICE -              length = 11 (e. g. "10" = "0,10")</li>
+<li>STRING:            CURRENCY -           length = 3 (ISO currency code, e. g. "EUR")</li>
+<li>STRING:            P_TYPE -             CC, ELV, EPS, GIROPAY, MAESTRO, PB, PSC, QUICK, etc</li>
+<li>STRING:            BRAND -              AMEX, DINERS, JCB, MASTERCARD, VISA, ATOS, HOBEX-AT, HOBEX-DE, etc</li>
+<li>INT:               MPAYTID -            length = 11</li>
+<li>STRING:            USER_FIELD</li>
+<li>STRING:            ORDERDESC</li>
+<li>STRING:            CUSTOMER</li>
+<li>STRING:            CUSTOMER_EMAIL</li>
+<li>STRING:            LANGUAGE -           length = 2</li>
+<li>STRING:            CUSTOMER_ID -        length = 11</li>
+<li>STRING:            PROFILE_STATUS -     IGNORED, USED, ERROR, CREATED, UPDATED, DELETED</li>
+<li>STRING:            FILTER_STATUS</li>
+<li>STRING:            APPR_CODE</li>
+</ul>
+
+                    </div>
+                    <table class="table table-bordered">
+                                                                                    <tr>
+                                    <th>
+                                        author
+                                                                            </th>
+                                    <td>mPAY24 GmbH &lt;support@mpay24.com&gt;</td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        version
+                                                                            </th>
+                                    <td>$Id: MPay24Shop.php 5522 2013-06-24 13:08:35Z anna $</td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        filesource
+                                                                            </th>
+                                    <td>MPay24Shop.php</td>
+                                </tr>
+                                                                                                                <tr>
+                                    <th>
+                                        license
+                                                                            </th>
+                                    <td>http://ec.europa.eu/idabc/eupl.html EUPL, Version 1.1</td>
+                                </tr>
+                                                                        </table>
+
+                    <h3><i class="icon-custom icon-method"></i> Methods</h3>
+                                            <a id="method_MPay24Shop"></a>
+                        <div class="element clickable method  method_MPay24Shop inherited" data-toggle="collapse" data-target=".method_MPay24Shop .collapse">
+                            <h2>The constructor, which sets all the initial values, in order to be able making transactions</h2>
+                            <pre>MPay24Shop(int $merchantID, string $soapPassword, bool $test, string $proxyHost = null, int $proxyPort = null, bool $debug = false) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$merchantID</h4>
+                                                <code>int</code><p><p>5-digit account number, supported by mPAY24:
+                                                                     TEST accounts - starting with 9
+                                                                     LIVE account - starting with 7</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$soapPassword</h4>
+                                                <code>string</code><p><p>The webservice's password, supported by mPAY24</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$test</h4>
+                                                <code>bool</code><p><p>TRUE - when you want to use the TEST system,
+                                                                     FALSE - when you want to use the LIVE system</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$proxyHost</h4>
+                                                <code>string</code><p><p>The host name in case you are behind a proxy server ("" when not)</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$proxyPort</h4>
+                                                <code>int</code><p><p>4-digit port number in case you are behind a proxy server ("" when not)</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$debug</h4>
+                                                <code>bool</code><p><p>TRUE - when you want to write log files,
+                                                                     FALSE - when you don't want write log files</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_createTransaction"></a>
+                        <div class="element clickable method  method_createTransaction inherited" data-toggle="collapse" data-target=".method_createTransaction .collapse">
+                            <h2>Create a transaction and save/return this (in a data base or file system (for example XML))</h2>
+                            <pre>createTransaction() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_updateTransaction"></a>
+                        <div class="element clickable method  method_updateTransaction inherited" data-toggle="collapse" data-target=".method_updateTransaction .collapse">
+                            <h2>Actualize the transaction, which has a transaction ID = $tid with the values from $args in your shop and return it</h2>
+                            <pre>updateTransaction(string $tid, array $args, bool $shippingConfirmed) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID you want to update with the confirmation</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code>array</code><p><p>Arrguments with them the transaction is to be updated</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$shippingConfirmed</h4>
+                                                <code>bool</code><p><p>TRUE if the shipping address is confirmed, FALSE - otherwise (in case of PayPal Express Checkout)</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getTransaction"></a>
+                        <div class="element clickable method  method_getTransaction inherited" data-toggle="collapse" data-target=".method_getTransaction .collapse">
+                            <h2>Give the transaction object back, for a transaction which has a transaction ID = $tid</h2>
+                            <pre>getTransaction(string $tid) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID of the transaction you want get</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_createMDXI"></a>
+                        <div class="element clickable method  method_createMDXI inherited" data-toggle="collapse" data-target=".method_createMDXI .collapse">
+                            <h2>Using the ORDER object from order.php, create a MDXI-XML, which is needed for a transaction to be started</h2>
+                            <pre>createMDXI(\Transaction $transaction) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$transaction</h4>
+                                                <code>\Transaction</code><p><p>The transaction you want to make a MDXI XML file for</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_createProfileOrder"></a>
+                        <div class="element clickable method  method_createProfileOrder inherited" data-toggle="collapse" data-target=".method_createProfileOrder .collapse">
+                            <h2>Using the ORDER object from order.php, create a order-xml, which is needed for a transaction with profiles to be started</h2>
+                            <pre>createProfileOrder(string $tid) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID of the transaction you want to make an order transaction XML file for</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_createExpressCheckoutOrder"></a>
+                        <div class="element clickable method  method_createExpressCheckoutOrder inherited" data-toggle="collapse" data-target=".method_createExpressCheckoutOrder .collapse">
+                            <h2>Using the ORDER object from order.php, create a order-xml, which is needed for a transaction with PayPal Express Checkout to be started</h2>
+                            <pre>createExpressCheckoutOrder(string $tid) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID of the transaction you want to make an order transaction XML file for</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_createFinishExpressCheckoutOrder"></a>
+                        <div class="element clickable method  method_createFinishExpressCheckoutOrder inherited" data-toggle="collapse" data-target=".method_createFinishExpressCheckoutOrder .collapse">
+                            <h2>Using the ORDER object from order.php, create a order-xml, which is needed for a transaction with PayPal Express Checkout to be finished</h2>
+                            <pre>createFinishExpressCheckoutOrder(string $tid, string $shippingCosts, string $amount, bool $cancel) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID of the transaction you want to make an order transaction XML file for</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$shippingCosts</h4>
+                                                <code>string</code><p><p>The shipping costs amount for the transaction, provided by PayPal, after changing the shipping address</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$amount</h4>
+                                                <code>string</code><p><p>The new amount for the transaction, provided by PayPal, after changing the shipping address</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$cancel</h4>
+                                                <code>bool</code><p><p>TRUE if the a cancelation is wanted after renewing the amounts and FALSE otherwise</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_write_log"></a>
+                        <div class="element clickable method  method_write_log inherited" data-toggle="collapse" data-target=".method_write_log .collapse">
+                            <h2>Write a log into a file, file system, data base</h2>
+                            <pre>write_log(string $operation, string $info_to_log) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$operation</h4>
+                                                <code>string</code><p><p>The operation, which is to log: GetPaymentMethods, Pay, PayWithProfile, Confirmation, UpdateTransactionStatus, ClearAmount, CreditAmount, CancelTransaction, etc.</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$info_to_log</h4>
+                                                <code>string</code><p><p>The information, which is to log: request, response, etc.</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_createSecret"></a>
+                        <div class="element clickable method  method_createSecret inherited" data-toggle="collapse" data-target=".method_createSecret .collapse">
+                            <h2>This is an optional function, but it&#039;s strongly recomended that you implement it - see details.</h2>
+                            <pre>createSecret(string $tid, string $amount, string $currency, string $timeStamp) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>It should build a hash from the transaction ID of your shop, the amount of the transaction,
+the currency and the timeStamp of the transaction. The mPAY24 confirmation interface will be called
+with this hash (parameter name 'token'), so you would be able to check whether the confirmation is
+really coming from mPAY24 or not. The hash should be then saved in the transaction object, so that
+every transaction has an unique secret token.</p>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID you want to make a secret key for</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$amount</h4>
+                                                <code>string</code><p><p>The amount, reserved for this transaction</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$currency</h4>
+                                                <code>string</code><p><p>The timeStamp at the moment the transaction is created</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$timeStamp</h4>
+                                                <code>string</code><p><p>The timeStamp at the moment the transaction is created</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getSecret"></a>
+                        <div class="element clickable method  method_getSecret inherited" data-toggle="collapse" data-target=".method_getSecret .collapse">
+                            <h2>Get the secret (hashed) token for a transaction</h2>
+                            <pre>getSecret(string $tid) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID you want to get the secret key for</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_getPaymentMethods"></a>
+                        <div class="element clickable method  method_getPaymentMethods inherited" data-toggle="collapse" data-target=".method_getPaymentMethods .collapse">
+                            <h2>Get a list which includes all the payment methods (activated by mPAY24) for your mechant ID</h2>
+                            <pre>getPaymentMethods() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_pay"></a>
+                        <div class="element clickable method  method_pay inherited" data-toggle="collapse" data-target=".method_pay .collapse">
+                            <h2>Return a redirect URL to start a payment</h2>
+                            <pre>pay() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_payWithProfile"></a>
+                        <div class="element clickable method  method_payWithProfile inherited" data-toggle="collapse" data-target=".method_payWithProfile .collapse">
+                            <h2>Start a payment with customer profile</h2>
+                            <pre>payWithProfile() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_payWithExpressCheckout"></a>
+                        <div class="element clickable method  method_payWithExpressCheckout inherited" data-toggle="collapse" data-target=".method_payWithExpressCheckout .collapse">
+                            <h2>Start a payment with PayPal Express Checkout</h2>
+                            <pre>payWithExpressCheckout() </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                    
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_finishExpressCheckoutPayment"></a>
+                        <div class="element clickable method  method_finishExpressCheckoutPayment inherited" data-toggle="collapse" data-target=".method_finishExpressCheckoutPayment .collapse">
+                            <h2>Finish the payment, started with PayPal Express Checkout - reserve, bill or cancel it: Whether are you going to reserve or bill a payment is setted at the beginning of the payment. With the &#039;cancel&#039; parameter you are able also to cancel the transaction</h2>
+                            <pre>finishExpressCheckoutPayment(string $tid, int $shippingCosts, int $amount, string $cancel) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID in the shop</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$shippingCosts</h4>
+                                                <code>int</code><p><p>The shippingcosts for the transaction multiply by 100</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$amount</h4>
+                                                <code>int</code><p><p>The amount you want to reserve/bill multiply by 100</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$cancel</h4>
+                                                <code>string</code><p><p>ALLOWED: "true" or "false" - in case of 'true' the transaction will be canceled, otherwise reserved/billed</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_confirm"></a>
+                        <div class="element clickable method  method_confirm inherited" data-toggle="collapse" data-target=".method_confirm .collapse">
+                            <h2>Proceed the confirmation call</h2>
+                            <pre>confirm(string $tid, array $args) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID in the shop</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$args</h4>
+                                                <code>array</code><p><p>A list with the arguments, provided with the confirmation</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_updateTransactionStatus"></a>
+                        <div class="element clickable method  method_updateTransactionStatus inherited" data-toggle="collapse" data-target=".method_updateTransactionStatus .collapse">
+                            <h2>Get the transaction&#039;s current information - see details</h2>
+                            <pre>updateTransactionStatus(string $tid) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>An array with all the data (by mPAY24) for this transaction (STATUS, CURRENCY, PRICE, APPR_CODE, etc) will be returned.
+Possible values for the STATUS attribute:</p>
+
+<ul>
+<li>RESERVED - in case the authorization was successful but not cleared yet</li>
+<li>BILLED - in case the authorization was successful and amount was cleared</li>
+<li>CREDITED - in case amount was credited</li>
+<li>REVERSED - in case the transaction was canceled</li>
+<li>SUSPENDED - in case the transaction is not fully compleated yet</li>
+<li>NOT FOUND - in case there is not such a transaction in the mPAY24 database</li>
+<li>ERROR - in case the transaction was not successful</li>
+</ul>
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID (in your shop), for the transaction you are asking for</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_clearAmount"></a>
+                        <div class="element clickable method  method_clearAmount inherited" data-toggle="collapse" data-target=".method_clearAmount .collapse">
+                            <h2>Clear an amount of an authorized transaction</h2>
+                            <pre>clearAmount(string $tid, int $amount) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID, for the transaction you want to clear</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$amount</h4>
+                                                <code>int</code><p><p>The amount you want to clear multiply by 100</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_creditAmount"></a>
+                        <div class="element clickable method  method_creditAmount inherited" data-toggle="collapse" data-target=".method_creditAmount .collapse">
+                            <h2>Credit an amount of a billed transaction</h2>
+                            <pre>creditAmount(string $tid, int $amount) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID, for the transaction you want to credit</p>
+</p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$amount</h4>
+                                                <code>int</code><p><p>The amount you want to credit multiply by 100</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_cancelTransaction"></a>
+                        <div class="element clickable method  method_cancelTransaction inherited" data-toggle="collapse" data-target=".method_cancelTransaction .collapse">
+                            <h2>Cancel a authorized transaction</h2>
+                            <pre>cancelTransaction(string $tid) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$tid</h4>
+                                                <code>string</code><p><p>The transaction ID, for the transaction you want to cancel</p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                                            <a id="method_checkTransaction"></a>
+                        <div class="element clickable method  method_checkTransaction inherited" data-toggle="collapse" data-target=".method_checkTransaction .collapse">
+                            <h2>Check if the a transaction is created, whether the object is from type Transaction and whether the mandatory settings (TID and PRICE) of a transaction are setted</h2>
+                            <pre>checkTransaction($transaction) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description">
+</div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                            </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$transaction</h4>
+                                                <code></code><p>
+</p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+                        </div>
+                    
+                    
+                                            <h3><i class="icon-custom icon-property"></i> Properties</h3>
+                                                    <a id="property_mPay24Api"> </a>
+                            <div class="element clickable property public property_mPay24Api" data-toggle="collapse" data-target=".property_mPay24Api .collapse">
+                                <h2>The mPAY24API Object, with you are going to work</h2>
+                                <pre>mPay24Api</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description">
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                                                            </div>
+            </div>
+            <a id="\MPay24Shop"></a>
+            <ul class="breadcrumb">
+                <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
+                    
+    
+    <li>
+        <span class="divider">\</span><a href="../namespaces/default.html">\</a>
+    </li>
+
+                <li class="active"><span class="divider">\</span><a href="../classes/MPay24Shop.html">MPay24Shop</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<footer class="span12">
+    Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
+    <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
+    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
+    generated on Mon, 24 Jun 2013 15:13:05 +0200.<br/>
+</footer>
+</body>
+</html>
