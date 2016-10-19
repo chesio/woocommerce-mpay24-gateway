@@ -6,7 +6,7 @@ if ( preg_match( '#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'] ) ) {
 /**
 	* creates all tables for the gateway
 	* called during register_activation_hook
-	* 
+	*
 	* @access internal
 	* @return void
 	*/
@@ -16,7 +16,7 @@ function wc_gateway_mpay24_install() {
 	$wpdb->hide_errors();
 
 	$collate = '';
-	if ( $wpdb->supports_collation() ) {
+	if ( $wpdb->has_cap('collation') ) {
 		if ( ! empty( $wpdb->charset ) ) {
 			$collate .= "DEFAULT CHARACTER SET $wpdb->charset";
 		}
@@ -69,7 +69,7 @@ function wc_gateway_mpay24_install() {
 /**
 	* Uninstall all settings and tables
 	* Called during register_unstall_hook
-	* 
+	*
 	* @access internal
 	* @return void
 	*/
