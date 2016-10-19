@@ -685,7 +685,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 
 				if ( ! empty( $posted['TID'] ) ) {
 
-					$order          = new WC_Order( (int) $posted['TID'] );
+					$order          = wc_get_order( (int) $posted['TID'] );
 					$table_name     = $wpdb->prefix . GATEWAY_MPAY24_TABLE_NAME;
 					$transaction_db = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE tid = %s", $posted['TID'] ) );
 
