@@ -561,7 +561,11 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				$result = $shop->pay();
 
 				if ( $result->getGeneralResponse()->getStatus() != 'OK' ) {
-					echo 'Return Code: ' . $result->getGeneralResponse()->getReturnCode();
+					wc_add_notice( $result->getGeneralResponse()->getReturnCode(), 'error' );
+					return array(
+						'result'   => 'fail',
+						'redirect' => ''
+					);
 				}
 
 				// open payment page
