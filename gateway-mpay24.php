@@ -138,6 +138,11 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 			var $htaccessuser;
 			var $htaccesspass;
 
+			/**
+			 * @var WC_Logger
+			 */
+			private $log = null;
+
 			// only these who cannot mapped 1:1
 			var $wpml_lang_mpay24 = array(
 				'zh-hans' => 'ZH',
@@ -166,7 +171,6 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 			 * init vars, settings and hooks
 			 */
 			public function __construct() {
-				global $woocommerce;
 
 				$this->id                 = 'mpay24';
 				$this->icon               = apply_filters( 'woocommerce_mpay24_icon', GATEWAY_MPAY24_URL . 'assets/images/cards.png' );
@@ -517,16 +521,16 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 			 * @see woocommerce/classes/class-wc-payment-gateway.php
 			 */
 			public function process_payment( $order_id ) {
-				global $woocommerce;
 
 				$order = new WC_Order( $order_id );
 
-				$testmode = ( 'yes' == $this->testmode ) ? true : false;
+				$testmode = ( 'yes' == $this->testmode );
 				$user     = ( 'yes' == $this->testmode ) ? $this->apiusertest : $this->apiuserprod;
 				$pass     = ( 'yes' == $this->testmode ) ? $this->apipasstest : $this->apipassprod;
+				$debug    = ( 'yes' == $this->debug );
 
 				// start mpay24 transaction
-				$shop = new WC_MPAY24_Shop( $user, $pass, $testmode );
+				$shop = new WC_MPAY24_Shop( $user, $pass, $testmode, $debug );
 				if ( isset( $this->log ) ) {
 					$shop->setLog( $this->log );
 				}
@@ -636,11 +640,12 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 					}
 				}
 
-				$testmode = ( 'yes' == $this->testmode ) ? true : false;
+				$testmode = ( 'yes' == $this->testmode );
 				$user     = ( 'yes' == $this->testmode ) ? $this->apiusertest : $this->apiuserprod;
 				$pass     = ( 'yes' == $this->testmode ) ? $this->apipasstest : $this->apipassprod;
+				$debug    = ( 'yes' == $this->debug );
 
-				$shop = new WC_MPAY24_Shop( $user, $pass, $testmode );
+				$shop = new WC_MPAY24_Shop( $user, $pass, $testmode, $debug );
 				if ( isset( $this->log ) ) {
 					$shop->setLog( $this->log );
 				}
