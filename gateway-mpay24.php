@@ -3,7 +3,7 @@
 	Plugin Name: WooCommerce mPAY24 Gateway
 	Plugin URI: http://wordpress.org/plugins/woocommerce-mpay24-gateway/
 	Description: Add mPAY24 Payment Gateway to WooCommerce Plugin
-	Version: 1.5.1
+	Version: 2.0.0.beta
 	Author: datenwerk innovationsagentur GmbH
 	Author URI: http://www.datenwerk.at
 	Requires at least: 3.5
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 
 	if ( ! defined( 'GATEWAY_MPAY24_VERSION' ) ) {
-		define( 'GATEWAY_MPAY24_VERSION', '1.5.1' );
+		define( 'GATEWAY_MPAY24_VERSION', '2.0.0.beta' );
 	}
 	if ( ! defined( 'GATEWAY_MPAY24_TABLE_NAME' ) ) {
 		define( 'GATEWAY_MPAY24_TABLE_NAME', 'woocommerce_mpay24_transaction' );
@@ -137,7 +137,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 			var $footer_style = '';
 			var $htaccessuser;
 			var $htaccesspass;
-			
+
 			// only these who cannot mapped 1:1
 			var $wpml_lang_mpay24 = array(
 				'zh-hans' => 'ZH',
@@ -189,14 +189,14 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				$this->description           = $this->get_option( 'description' ); // frontend description
 				$this->thankyou_text         = $this->get_option( 'thankyou_text' );
 				$this->email_text            = $this->get_option( 'email_text' );
-				                             
+
 				$this->apiusertest           = $this->get_option( 'apiusertest' );
 				$this->apipasstest           = $this->get_option( 'apipasstest' );
 				$this->apiuserprod           = $this->get_option( 'apiuserprod' );
 				$this->apipassprod           = $this->get_option( 'apipassprod' );
 				$this->testmode              = $this->get_option( 'testmode' );
 				$this->debug                 = $this->get_option( 'debug' );
-				                             
+
 				$this->payment_page_lang     = $this->set_payment_page_lang();
 				$this->page_bg_color         = $this->get_option( 'page_bg_color' );
 				$this->logo_style            = $this->get_option( 'logo_style' );
@@ -211,7 +211,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				$this->success_title_style   = $this->get_option( 'success_title_style' );
 				$this->error_title_style     = $this->get_option( 'error_title_style' );
 				$this->footer_style          = $this->get_option( 'footer_style' );
-				
+
 				$this->htaccessuser           = $this->get_option( 'htaccessuser' );
 				$this->htaccesspass           = $this->get_option( 'htaccesspass' );
 				// Logging
@@ -326,7 +326,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 						'type'        => 'checkbox',
 						'description' => __( 'Log mPAY24 events inside <code>/wp-content/plugins/woocommerce/logs/</code>, since WC 2.2 to WC_LOG_DIR (default: <code>/wc-logs/</code>)', 'wc-mpay24' ),
 						'default'     => 'no'
-						
+
 					),
 					'styling' => array(
 						'title'       => __( 'mPAY24 Payment Page Styling', 'wc-mpay24' ),
@@ -480,21 +480,21 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				</table>
 				<?php
 			}
-			
+
 			/**
 			 * add .htaccess credentials from options to url
 			 *
-			 * @param string $url 
+			 * @param string $url
 			 * @return string - protected url
 			 */
 			protected function protect_url( $url ) {
 				if( '' != $this->htaccessuser && '' != $this->htaccesspass ) {
 					return str_replace( '://', '://' . $this->htaccessuser . ':' . $this->htaccesspass . '@', $url );
 				}
-				
+
 				return $url;
 			}
-			
+
 			protected function set_payment_page_lang() {
 				if( $this->get_option( 'payment_page_lang' ) == 'auto' ) {
 					if( defined( 'ICL_LANGUAGE_CODE' ) ) {
@@ -505,7 +505,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 						}
 					}
 				}
-				
+
 				return $this->get_option( 'payment_page_lang' );
 			}
 
@@ -533,7 +533,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				$tid = $order_id . '-' . sanitize_title( $order->billing_last_name ) . '-' . sanitize_title( $order->billing_first_name );
 				$shop->setTid( substr( $tid, 0, 32 ) );
 				$shop->setPrice( $order->order_total );
-				
+
 				$shop->setLanguage( $this->payment_page_lang );
 				$customer_name = ( $order->billing_company != '' ) ? $order->billing_company : $order->billing_first_name . ' ' . $order->billing_last_name;
 				$shop->setCustomer( $customer_name );
@@ -618,7 +618,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				<?php if ( '' != $this->email_text ) : ?><p><?php echo wpautop( wptexturize( $this->email_text ) ); ?></p><?php endif; ?>
 				<?php
 			}
-			
+
 			/**
 			 * Confirm MPAY24 transaction
 			 */
@@ -641,7 +641,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 					$shop->setLog( $this->log );
 				}
 				$shop->confirm( $_GET['TID'], $args );
-				
+
 				return true;
 			}
 
