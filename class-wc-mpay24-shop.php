@@ -285,7 +285,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 
 		return $this;
 	}
-	
+
 	public function setPageBgColor( $v ) {
 		if ( null !== $v ) {
 			$v = (string) $v;
@@ -297,7 +297,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 
 		return $this;
 	}
-	
+
 	public function setLogoStyle( $v ) {
 		if ( null !== $v ) {
 			$v = (string) $v;
@@ -309,7 +309,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 
 		return $this;
 	}
-	
+
 	public function setPageHeaderStyle( $v ) {
 		if ( null !== $v ) {
 			$v = (string) $v;
@@ -321,7 +321,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 
 		return $this;
 	}
-	
+
 	public function setPageCaptionStyle( $v ) {
 		if ( null !== $v ) {
 			$v = (string) $v;
@@ -333,7 +333,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 
 		return $this;
 	}
-	
+
 	public function setPageStyle( $v ) {
 		if ( null !== $v ) {
 			$v = (string) $v;
@@ -345,7 +345,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 
 		return $this;
 	}
-	
+
 	public function setInputFieldsStyle( $v ) {
 		if ( null !== $v ) {
 			$v = (string) $v;
@@ -357,7 +357,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 
 		return $this;
 	}
-	
+
 	public function setDropDownListsStyle( $v ) {
 		if ( null !== $v ) {
 			$v = (string) $v;
@@ -393,7 +393,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 
 		return $this;
 	}
-	
+
 	public function setErrorsHeaderStyle( $v ) {
 		if ( null !== $v ) {
 			$v = (string) $v;
@@ -429,7 +429,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 
 		return $this;
 	}
-	
+
 	public function setFooterStyle( $v ) {
 		if ( null !== $v ) {
 			$v = (string) $v;
@@ -452,7 +452,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 
 		// transaction exists for payment on failed orders (order-pay url param)
 		$transactionDb = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . $wpdb->prefix . GATEWAY_MPAY24_TABLE_NAME . " WHERE tid = %s", $this->getTid() ) );
-		
+
 		if ($transactionDb != null) {
 			$update = array();
 			$update['price'] = $this->getPrice() * 100;
@@ -463,11 +463,11 @@ class WC_MPAY24_Shop extends MPay24Shop {
 				$update,
 				array( 'tid' => $this->getTid() )
 			);
-			
+
 			$secret = $transactionDb->secret;
 		} else {
 			$secret = $this->createSecret( $this->getTid(), $this->getPrice(), 'EUR', time() );
-			
+
 			$wpdb->insert(
 				$wpdb->prefix . GATEWAY_MPAY24_TABLE_NAME,
 				array(
@@ -478,17 +478,17 @@ class WC_MPAY24_Shop extends MPay24Shop {
 				),
 				array( '%s', '%d', '%s', '%s' )
 			);
-			
-			
+
+
 		}
-		
+
 		$transaction = new Transaction( $this->getTid() );
 
 		// setting via magic method __set
 		$transaction->PRICE = $this->getPrice();
 		$transaction->CURRENCY = 'EUR';
 		$transaction->SECRET = $secret;
-		
+
 		return $transaction;
 	}
 
@@ -567,7 +567,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 		$mdxi->Order->TemplateSet = 'WEB';
 		$mdxi->Order->TemplateSet->setLanguage( $this->getLanguage() );
 		$mdxi->Order->TemplateSet->setCSSName( 'MOBILE' ); // use responsive template
-		
+
 		$mdxi->Order->PaymentTypes->setEnable( 'true' );
 
 		$pTypes = $paymentMethods->getPTypes();
@@ -691,4 +691,18 @@ class WC_MPAY24_Shop extends MPay24Shop {
 
 		return $transaction->SECRET;
 	}
+
+    /**
+     * NOT IMPLEMENTED
+     *
+     * Using the ORDER object from order.php, create a order-xml, which is needed for a backend to backend transaction to be started
+     *
+     * @param string $tid
+     *          The transaction ID of the transaction you want to make an order transaction XML file for
+     * @param string $paymentType
+     *          The payment type which will be used for the backend to backend payment (EPS, SOFORT, PAYPAL, MASTERPASS or TOKEN)
+     * @return XML
+     */
+	public function createBackend2BackendOrder($tid, $paymentType) {}
+
 }
