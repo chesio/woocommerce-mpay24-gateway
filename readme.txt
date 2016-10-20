@@ -1,11 +1,10 @@
 === WooCommerce mPAY24 Gateway ===
 
-Contributors: datenwerk
-Donate link:
+Contributors: datenwerk, chesio
 Tags: woocommerce, gateway, mpay24
 Requires at least: 3.5
-Tested up to: 4.0.1
-Stable tag: 2.0.0.beta
+Tested up to: 4.5.4
+Stable tag: 2.0.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,7 +14,7 @@ Add mPAY24 Payment Gateway to WooCommerce Plugin.
 
 = Features =
 
-* Uses mPAY24 PHP files (version 2013-06-24), follows mPAY24 SOAP Specification (version 2014-09-12)
+* Uses mPAY24 PHP files (version 2016-10-19), follows mPAY24 SOAP Specification (version 2014-09-12)
 * Using the mPAY24 payment page to integrate in website
 * Switching between DEV and PROD mPAY24 environment with SOAP logins
 * Supports all payment methods of mPAY24
@@ -39,7 +38,7 @@ If you want to extend the functionality you have to edit `class-wc-mpay24-shop.p
 * cURL (mPAY24 API)
 * DOM (mPAY24 API)
 * Mcrypt (mPAY24 API)
-* [WooCommerce Plugin](http://www.woothemes.com/woocommerce/) v2.0 or higher
+* [WooCommerce Plugin](https://wordpress.org/plugins/woocommerce/) v2.0 or higher
 
 = Manual installation =
 
@@ -76,7 +75,16 @@ Maybe you have an .htaccess protection (HTTP authentication) on your wordpress s
 
 == Changelog ==
 
-= 2.0.0.beta =
+= 2.0.0 - 2016-10-20 =
+* Tweak - Update mPAY24 PHP API to v.2.0.0 (recent master). Include missing abstract methods in WC_MPAY24_Shop class, but leave them unimplemented.
+* Tweak - Add logs directory for logging of curl responses when mPAY24 API runs in debug mode. This is a work-around for https://github.com/mPAY24/mpay24_php_api/issues/6.
+* Fix - TID check added to prevent PHP undefined key notices.
+* Fix - Prefer wc_get_order() instead of new WC_Order() to retrieve orders.
+* Fix - Fix return value of WC_Gateway_MPAY24::process_payment() method.
+* Fix - Do not use deprecated method wpdb::supports_collation().
+* Other - Minor codebase fixes and improvements.
+* Other - Minor readme.txt file updates.
+* Other - Drop MPay24/doc directory, documentation can be found online.
 
 = 1.5.1 - 2014-11-28 =
 

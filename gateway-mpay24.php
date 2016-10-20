@@ -3,11 +3,11 @@
 	Plugin Name: WooCommerce mPAY24 Gateway
 	Plugin URI: http://wordpress.org/plugins/woocommerce-mpay24-gateway/
 	Description: Add mPAY24 Payment Gateway to WooCommerce Plugin
-	Version: 2.0.0.beta
+	Version: 2.0.0
 	Author: datenwerk innovationsagentur GmbH
 	Author URI: http://www.datenwerk.at
 	Requires at least: 3.5
-	Tested up to: 4.0.1
+	Tested up to: 4.5.4
 */
 
 // Exit if accessed directly
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 
 	if ( ! defined( 'GATEWAY_MPAY24_VERSION' ) ) {
-		define( 'GATEWAY_MPAY24_VERSION', '2.0.0.beta' );
+		define( 'GATEWAY_MPAY24_VERSION', '2.0.0' );
 	}
 	if ( ! defined( 'GATEWAY_MPAY24_TABLE_NAME' ) ) {
 		define( 'GATEWAY_MPAY24_TABLE_NAME', 'woocommerce_mpay24_transaction' );
