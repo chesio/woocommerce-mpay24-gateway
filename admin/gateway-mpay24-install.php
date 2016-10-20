@@ -11,7 +11,7 @@ if ( preg_match( '#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'] ) ) {
 	* @return void
 	*/
 function wc_gateway_mpay24_install() {
-	global $wpdb, $woocommerce;
+	global $wpdb;
 
 	$wpdb->hide_errors();
 
