@@ -145,11 +145,13 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 
 			/**
 			 * @link https://make.wordpress.org/polyglots/teams/ List of WP locales
+			 * @link https://docs.mpay24.com/docs/redirect-integration#section-supported-languages List of languages supported by mPAY24
 			 * @var array Mapping: WordPress locale => mPAY24 language code
 			 */
 			private $wp_locale_mpay24 = array(
 				'bg_BG' => 'BG',
 				'cs_CZ' => 'CS',
+				'da_DK' => 'DA',
 				'de_DE' => 'DE',
 				'de_CH' => 'DE',
 				'en_AU' => 'EN',
@@ -157,6 +159,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				'en_GB' => 'EN',
 				'en_NZ' => 'EN',
 				'en_ZA' => 'EN',
+				'el'    => 'EL',
 				'es_AR' => 'ES',
 				'es_CL' => 'ES',
 				'es_CO' => 'ES',
@@ -166,6 +169,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				'es_PR' => 'ES',
 				'es_ES' => 'ES',
 				'es_VE' => 'ES',
+				'fi'    => 'FI',
 				'fr_BE' => 'FR',
 				'fr_CA' => 'FR',
 				'fr_FR' => 'FR',
@@ -175,15 +179,21 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				'nl_NL' => 'NL',
 				'it_IT' => 'IT',
 				'ja'    => 'JA',
+				'nl_BE' => 'NL',
+				'nl_NL' => 'NL',
+				'nb_NO' => 'NO',
+				'nn_NO' => 'NO',
 				'pl_PL' => 'PL',
 				'pt_BR' => 'PT',
 				'pt_PT' => 'PT',
 				'ro_RO' => 'RO',
 				'ru_RU' => 'RU',
-				'sr_RS' => 'SR',
 				'sk_SK' => 'SK',
 				'sl_SI' => 'SL',
+				'sr_RS' => 'SR',
+				'sv_SE' => 'SV',
 				'tr_TR' => 'TR',
+				'uk'    => 'UK',
 				'zh_CN' => 'ZH',
 				'zh_HK' => 'ZH',
 				'zh_TW' => 'ZH',
@@ -191,6 +201,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 
 			/**
 			 * @var array Mapping: WPML language code => mPAY24 language code
+			 * @todo Mapping is out-dated, mPAY24 supports more languages now.
 			 */
 			private $wpml_lang_mpay24 = array(
 				'zh-hans' => 'ZH',
@@ -395,13 +406,17 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 							'ZH'   => __( 'Chinese', 'wc-mpay24' ),
 							'HR'   => __( 'Croatian', 'wc-mpay24' ),
 							'CS'   => __( 'Czech', 'wc-mpay24' ),
+							'DA'   => __( 'Danish', 'wc-mpay24' ),
 							'NL'   => __( 'Dutch', 'wc-mpay24' ),
 							'EN'   => __( 'English', 'wc-mpay24' ),
+							'FI'   => __( 'Finnish', 'wc-mpay24' ),
 							'FR'   => __( 'French', 'wc-mpay24' ),
 							'DE'   => __( 'German', 'wc-mpay24' ), // default
+							'EL'   => __( 'Greek', 'wc-mpay24' ),
 							'HU'   => __( 'Hungarian', 'wc-mpay24' ),
 							'IT'   => __( 'Italian', 'wc-mpay24' ),
 							'JA'   => __( 'Japanese', 'wc-mpay24' ),
+							'NO'   => __( 'Norwegian', 'wc-mpay24' ),
 							'PL'   => __( 'Polish', 'wc-mpay24' ),
 							'PT'   => __( 'Portuguese', 'wc-mpay24' ),
 							'RO'   => __( 'Romanian', 'wc-mpay24' ),
@@ -410,8 +425,10 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 							'SK'   => __( 'Slovak', 'wc-mpay24' ),
 							'SL'   => __( 'Slovenian', 'wc-mpay24' ),
 							'ES'   => __( 'Spanish', 'wc-mpay24' ),
-							'TR'   => __( 'Turkish', 'wc-mpay24' )
-						), // see mPAY24 specification Appendix for supported languages
+							'SV'   => __( 'Swedish', 'wc-mpay24' ),
+							'TR'   => __( 'Turkish', 'wc-mpay24' ),
+							'UK'   => __( 'Ukrainian', 'wc-mpay24' ),
+						), // See: https://docs.mpay24.com/docs/redirect-integration#section-supported-languages
 						'description' => __( 'This controls in which language the payment page is shown. If "auto with WPML" is set current user language is used (if avaiable on mPAY24 side, otherwise "EN"). WPML plugin required for "auto with WPML" option.', 'wc-mpay24' ),
 						'desc_tip'    => true,
 						'default'     => 'EN'
