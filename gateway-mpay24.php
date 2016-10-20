@@ -634,6 +634,11 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				$get_params = $_GET;
 				$args	   = array();
 
+				if ( !($tid = filter_input(INPUT_GET, 'TID')) ) {
+					return false;
+				}
+
+				// Store all _GET params but TID into $args.
 				foreach ( $get_params as $key => $value ) {
 					if ( 'TID' !== $key ) {
 						$args[ $key ] = $value;
@@ -649,7 +654,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				if ( isset( $this->log ) ) {
 					$shop->setLog( $this->log );
 				}
-				$shop->confirm( $_GET['TID'], $args );
+				$shop->confirm( $tid, $args );
 
 				return true;
 			}
