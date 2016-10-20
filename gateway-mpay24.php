@@ -112,31 +112,31 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 		 */
 		class WC_Gateway_MPAY24 extends WC_Payment_Gateway {
 
-			var $thankyou_text;
-			var $email_text;
-			var $payment_page_lang = 'EN';
-			var $apiusertest;
-			var $apipasstest;
-			var $apiuserprod;
-			var $apipassprod;
-			var $testmode;
-			var $debug;
-			var $notify_url;
-			var $page_bg_color = '#ffffff';
-			var $logo_style = 'max-width: 100%';
-			var $page_header_style = 'height: auto;line-height: 1.75em;color: #000000;margin-bottom: 10px';
-			var $page_caption_style = 'background: transparent;color: #000000;border-radius: 0;margin: 0 5px 0 0;padding: 0;font-size: 1.167em;line-height: 1.5em;text-shadow: none';
-			var $page_style = 'background: #ffffff';
-			var $input_fields_style = '';
-			var $drop_down_lists_style = '';
-			var $buttons_style = '';
-			var $errors_style = '';
-			var $errors_header_style = '';
-			var $success_title_style = '';
-			var $error_title_style = '';
-			var $footer_style = '';
-			var $htaccessuser;
-			var $htaccesspass;
+			private $thankyou_text;
+			private $email_text;
+			private $payment_page_lang = 'EN';
+			private $apiusertest;
+			private $apipasstest;
+			private $apiuserprod;
+			private $apipassprod;
+			private $testmode;
+			private $debug;
+			private $notify_url;
+			private $page_bg_color = '#ffffff';
+			private $logo_style = 'max-width: 100%';
+			private $page_header_style = 'height: auto;line-height: 1.75em;color: #000000;margin-bottom: 10px';
+			private $page_caption_style = 'background: transparent;color: #000000;border-radius: 0;margin: 0 5px 0 0;padding: 0;font-size: 1.167em;line-height: 1.5em;text-shadow: none';
+			private $page_style = 'background: #ffffff';
+			private $input_fields_style = '';
+			private $drop_down_lists_style = '';
+			private $buttons_style = '';
+			private $errors_style = '';
+			private $errors_header_style = '';
+			private $success_title_style = '';
+			private $error_title_style = '';
+			private $footer_style = '';
+			private $htaccessuser;
+			private $htaccesspass;
 
 			/**
 			 * @var WC_Logger
