@@ -288,6 +288,8 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				add_action( 'woocommerce_email_after_order_table', array( $this, 'customer_email_text' ), 10, 2 ); // customer email
 
 				// Payment listener/API hook
+				// TODO: Hooks added inside gateway classes may not trigger:
+				// https://docs.woocommerce.com/document/payment-gateway-api/#required-methods
 				add_action( 'woocommerce_api_wc_gateway_mpay24', array( $this, 'check_mpay24_response' ) ); // mPAY24 transaction confirmation
 				add_action( 'valid_mpay24_standard_request', array( $this, 'successful_request' ) ); // order status update
 			}
@@ -714,17 +716,18 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 
 			/**
 			 * Confirm MPAY24 transaction
+			 * @param array $params GET params
+			 * @return boolean True, if request is valid, false otherwise.
 			 */
-			function check_ipn_request_is_valid() {
-				$get_params = $_GET;
-				$args	   = array();
+			protected function check_ipn_request_is_valid($params) {
 
-				if ( !($tid = filter_input(INPUT_GET, 'TID')) ) {
+				if ( empty($params['TID']) ) {
 					return false;
 				}
 
-				// Store all _GET params but TID into $args.
-				foreach ( $get_params as $key => $value ) {
+				// Store all params but TID into $args.
+				$args = array();
+				foreach ( $params as $key => $value ) {
 					if ( 'TID' !== $key ) {
 						$args[ $key ] = $value;
 					}
@@ -739,7 +742,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				if ( $debug ) {
 					$shop->setLog( $this->log );
 				}
-				$shop->confirm( $tid, $args );
+				$shop->confirm( $params['TID'], $args ); // TODO: Maybe method should return the result of this call? Investigate.
 
 				return true;
 			}
@@ -752,11 +755,14 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 			 * @access public
 			 * @return void
 			 */
-			function check_mpay24_response() {
+			public function check_mpay24_response() {
 				@ob_clean();
-				if ( ! empty( $_GET ) && $this->check_ipn_request_is_valid() ) {
+				if ( $this->check_ipn_request_is_valid($_GET) ) {
+					$posted = wp_unslash($_GET);
+					do_action( 'valid_mpay24_standard_request', $posted );
+
 					header( 'HTTP/1.1 200 OK' );
-					do_action( 'valid_mpay24_standard_request', $_GET );
+					exit;
 				} else {
 					wp_die( 'mPAY24 IPN Request Failure' );
 				}
@@ -773,31 +779,33 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 			public function successful_request( $posted ) {
 				global $wpdb;
 
-				if ( ! empty( $posted['TID'] ) ) {
+				if ( empty($posted['TID']) ) {
+					// Should not happen, but better safe than sorry.
+					return;
+				}
 
-					$order          = wc_get_order( (int) $posted['TID'] );
-					$table_name     = $wpdb->prefix . GATEWAY_MPAY24_TABLE_NAME;
-					$transaction_db = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE tid = %s", $posted['TID'] ) );
+				$order          = wc_get_order( (int) $posted['TID'] );
+				$table_name     = $wpdb->prefix . GATEWAY_MPAY24_TABLE_NAME;
+				$transaction_db = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table_name WHERE tid = %s", $posted['TID'] ) );
 
-					//mpay24 transaction status: BILLED,RESERVED,ERROR,SUSPENDED,CREDITED,REVERSED
-					// Lowercase
-					$tstatus = strtolower( $transaction_db->tstatus );
+				//mpay24 transaction status: BILLED,RESERVED,ERROR,SUSPENDED,CREDITED,REVERSED
+				// Lowercase
+				$tstatus = strtolower( $transaction_db->tstatus );
 
-					if ( 'yes' == $this->debug ) {
-						$this->log->add( 'mpay24', 'Transaction status: ' . $tstatus );
-					}
+				if ( 'yes' == $this->debug ) {
+					$this->log->add( 'mpay24', 'Transaction status: ' . $tstatus );
+				}
 
-					// We are here so lets check status and do actions
-					switch ( $tstatus ) {
-						case 'billed':
-							// Check order not already completed
-							if ( 'completed' == $order->status ) {
-								if ( 'yes' == $this->debug ) {
-									$this->log->add( 'mpay24', 'Aborting, Order #' . $order->id . ' is already complete.' );
-								}
-								exit;
+				// We are here so lets check status and do actions
+				switch ( $tstatus ) {
+					case 'billed':
+						// Check order not already completed
+						if ( 'completed' == $order->status ) {
+							if ( 'yes' == $this->debug ) {
+								$this->log->add( 'mpay24', 'Aborting, Order #' . $order->id . ' is already complete.' );
 							}
-
+						}
+						else {
 							// Payment completed
 							$order->add_order_note( __( 'mPAY24 payment completed', 'wc-mpay24' ) );
 							$order->payment_complete();
@@ -805,32 +813,29 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 							if ( 'yes' == $this->debug ) {
 								$this->log->add( 'mpay24', 'Payment complete.' );
 							}
+						}
 						break;
-                        case 'suspended':
-						case 'reserved':
-							// Order pending
-							$order->update_status( 'on-hold', sprintf( __( 'Payment %s via mPAY24.', 'wc-mpay24' ), $tstatus ) );
+					case 'suspended':
+					case 'reserved':
+						// Order pending
+						$order->update_status( 'on-hold', sprintf( __( 'Payment %s via mPAY24.', 'wc-mpay24' ), $tstatus ) );
 						break;
-						case 'error':
-							// Order failed
-							$order->update_status( 'failed', sprintf( __( 'Payment %s via mPAY24.', 'wc-mpay24' ), $tstatus ) );
-							if( version_compare( $woocommerce->version, '2.1', '>=' ) ) {
-								wc_add_notice( __( 'Payment failed via mPAY24.', 'wc-mpay24' ), 'error' );
-							}
+					case 'error':
+						// Order failed
+						$order->update_status( 'failed', sprintf( __( 'Payment %s via mPAY24.', 'wc-mpay24' ), $tstatus ) );
+						if( version_compare( $woocommerce->version, '2.1', '>=' ) ) {
+							wc_add_notice( __( 'Payment failed via mPAY24.', 'wc-mpay24' ), 'error' );
+						}
 						break;
-						case 'credited':
-							$order->update_status( 'refunded', sprintf(__('Payment %s via mPAY24.', 'wc-mpay24' ), $tstatus ) );
+					case 'credited':
+						$order->update_status( 'refunded', sprintf(__('Payment %s via mPAY24.', 'wc-mpay24' ), $tstatus ) );
 						break;
-						case 'reversed':
-							// Order cancelled
-							$order->cancel_order( sprintf( __( 'Payment %s via mPAY24.', 'wc-mpay24' ), $tstatus ) );
+					case 'reversed':
+						// Order cancelled
+						$order->cancel_order( sprintf( __( 'Payment %s via mPAY24.', 'wc-mpay24' ), $tstatus ) );
 						break;
-
-						default:
+					default:
 						// No action
-						break;
-					}
-					exit;
 				}
 			}
 		}
