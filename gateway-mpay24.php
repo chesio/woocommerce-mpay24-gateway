@@ -618,8 +618,8 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				$shop->setCustomerId( $order->user_id );
 
 				$shop->setSuccessUrl( $this->get_return_url( $order ) ); // thank you page
-				$shop->setErrorUrl( $order->get_cancel_order_url() ); // failed orders will also be marked as cancelled
-				$shop->setCancelUrl( $order->get_cancel_order_url() );
+				$shop->setErrorUrl( $order->get_cancel_order_url_raw() ); // failed orders will also be marked as cancelled
+				$shop->setCancelUrl( $order->get_cancel_order_url_raw() );
 				$shop->setConfirmUrl( $this->protect_url( $this->notify_url ) );
 
 				$shop->setPageBgColor( $this->page_bg_color );
