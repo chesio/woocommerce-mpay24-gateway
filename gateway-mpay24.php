@@ -605,7 +605,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 
 				// start mpay24 transaction
 				$shop = new WC_MPAY24_Shop( $user, $pass, $testmode, $debug );
-				if ( isset( $this->log ) ) {
+				if ( $debug ) {
 					$shop->setLog( $this->log );
 				}
 				$tid = $order_id . '-' . sanitize_title( $order->billing_last_name ) . '-' . sanitize_title( $order->billing_first_name );
@@ -636,6 +636,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				$shop->setErrorTitleStyle( $this->error_title_style );
 				$shop->setFooterStyle( $this->footer_style );
 
+				/** @var PaymentResponse */
 				$result = $shop->pay();
 
 				if ( $result->getGeneralResponse()->getStatus() != 'OK' ) {
@@ -728,7 +729,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				$debug    = ( 'yes' == $this->debug );
 
 				$shop = new WC_MPAY24_Shop( $user, $pass, $testmode, $debug );
-				if ( isset( $this->log ) ) {
+				if ( $debug ) {
 					$shop->setLog( $this->log );
 				}
 				$shop->confirm( $tid, $args );

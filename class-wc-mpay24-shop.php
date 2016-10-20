@@ -53,7 +53,7 @@ class WC_MPAY24_Shop extends MPay24Shop {
 	/**
 	 * logger
 	 *
-	 * @var object
+	 * @var WC_Logger
 	 */
 	protected $log = null;
 
