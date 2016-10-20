@@ -76,6 +76,8 @@ Maybe you have an .htaccess protection (HTTP authentication) on your wordpress s
 == Changelog ==
 
 = 2.1.0.beta =
+* Feature - New option for Language setting: "Use WordPress locale". With this option on, payment page language corresponds to WordPress locale. This option works nicely with multilanguage plugins that work by switching WordPress locale (for example Polylang).
+* Other - Minor code cleanup.
 
 = 2.0.0 - 2016-10-20 =
 * Tweak - Update mPAY24 PHP API to v.2.0.0 (recent master). Include missing abstract methods in WC_MPAY24_Shop class, but leave them unimplemented.

@@ -143,8 +143,56 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 			 */
 			private $log = null;
 
-			// only these who cannot mapped 1:1
-			var $wpml_lang_mpay24 = array(
+			/**
+			 * @link https://make.wordpress.org/polyglots/teams/ List of WP locales
+			 * @var array Mapping: WordPress locale => mPAY24 language code
+			 */
+			private $wp_locale_mpay24 = array(
+				'bg_BG' => 'BG',
+				'cs_CZ' => 'CS',
+				'de_DE' => 'DE',
+				'de_CH' => 'DE',
+				'en_AU' => 'EN',
+				'en_CA' => 'EN',
+				'en_GB' => 'EN',
+				'en_NZ' => 'EN',
+				'en_ZA' => 'EN',
+				'es_AR' => 'ES',
+				'es_CL' => 'ES',
+				'es_CO' => 'ES',
+				'es_GT' => 'ES',
+				'es_MX' => 'ES',
+				'es_PE' => 'ES',
+				'es_PR' => 'ES',
+				'es_ES' => 'ES',
+				'es_VE' => 'ES',
+				'fr_BE' => 'FR',
+				'fr_CA' => 'FR',
+				'fr_FR' => 'FR',
+				'hr'    => 'HR',
+				'hu_HU' => 'HU',
+				'nl_BE' => 'NL',
+				'nl_NL' => 'NL',
+				'it_IT' => 'IT',
+				'ja'    => 'JA',
+				'pl_PL' => 'PL',
+				'pt_BR' => 'PT',
+				'pt_PT' => 'PT',
+				'ro_RO' => 'RO',
+				'ru_RU' => 'RU',
+				'sr_RS' => 'SR',
+				'sk_SK' => 'SK',
+				'sl_SI' => 'SL',
+				'tr_TR' => 'TR',
+				'zh_CN' => 'ZH',
+				'zh_HK' => 'ZH',
+				'zh_TW' => 'ZH',
+			);
+
+			/**
+			 * @var array Mapping: WPML language code => mPAY24 language code
+			 */
+			private $wpml_lang_mpay24 = array(
 				'zh-hans' => 'ZH',
 				'pt-pt'   => 'PT',
 				'bg'      => 'BG',
@@ -201,7 +249,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				$this->testmode              = $this->get_option( 'testmode' );
 				$this->debug                 = $this->get_option( 'debug' );
 
-				$this->payment_page_lang     = $this->set_payment_page_lang();
+				$this->payment_page_lang     = $this->get_payment_page_lang();
 				$this->page_bg_color         = $this->get_option( 'page_bg_color' );
 				$this->logo_style            = $this->get_option( 'logo_style' );
 				$this->page_header_style     = $this->get_option( 'page_header_style' );
@@ -341,6 +389,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 						'title'       => __( 'Language', 'wc-mpay24' ),
 						'type'        => 'select',
 						'options'     => array(
+							'locale' => __('Use WordPress locale', 'wc-mpay24' ),
 							'auto' => __( 'auto with WPML', 'wc-mpay24' ),
 							'BG'   => __( 'Bulgarian', 'wc-mpay24' ),
 							'ZH'   => __( 'Chinese', 'wc-mpay24' ),
@@ -499,18 +548,26 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				return $url;
 			}
 
-			protected function set_payment_page_lang() {
-				if( $this->get_option( 'payment_page_lang' ) == 'auto' ) {
-					if( defined( 'ICL_LANGUAGE_CODE' ) ) {
-						if( array_key_exists( ICL_LANGUAGE_CODE, $this->wpml_lang_mpay24 ) ) {
-							return $this->wpml_lang_mpay24[ICL_LANGUAGE_CODE];
-						} else {
-							return 'EN';
-						}
-					}
+			/**
+			 * Get payment page language.
+			 * @return string Language code recognized by mPAY24 API.
+			 */
+			protected function get_payment_page_lang() {
+				$payment_page_lang = $this->get_option('payment_page_lang');
+
+				if ( $payment_page_lang === 'locale' ) {
+					// This works with Polylang and any other multilanguage plugins that performs locale switching.
+					$locale = get_locale();
+					return isset($this->wp_locale_mpay24[$locale]) ? $this->wp_locale_mpay24[$locale] : 'EN';
 				}
 
-				return $this->get_option( 'payment_page_lang' );
+				if ( $payment_page_lang === 'auto' ) {
+					// WPML installed?
+					$lang_code = defined('ICL_LANGUAGE_CODE') ? ICL_LANGUAGE_CODE : 'en';
+					return isset($this->wpml_lang_mpay24[$lang_code]) ? $this->wpml_lang_mpay24[$lang_code] : 'EN';
+				}
+
+				return $payment_page_lang;
 			}
 
 			/**
