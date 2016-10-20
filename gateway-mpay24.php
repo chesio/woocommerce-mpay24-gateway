@@ -588,10 +588,12 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 			 * @see woocommerce/classes/class-wc-payment-gateway.php
 			 */
 			public function payment_fields() {
-				?>
-				<?php if ( 'yes' == $this->testmode ) : ?><p><?php _e( 'TEST MODE ENABLED', 'wc-mpay24' ); ?></p><?php endif; ?>
-				<?php if ( $description = $this->get_description() ) : ?><p><?php echo wpautop( wptexturize( $description ) ); ?></p><?php endif; ?>
-				<?php
+				if ( 'yes' == $this->testmode ) {
+					echo '<p>' . esc_html__( 'TEST MODE ENABLED', 'wc-mpay24' ) . '</p>';
+				}
+				if ( ($description = $this->get_description()) ) {
+					echo '<p>' . wpautop( wptexturize( $description ) ) . '</p>';
+				}
 			}
 
 			/**
@@ -602,9 +604,9 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 			 * @return void
 			 */
 			public function thankyou_page_text( $order ) {
-				?>
-				<?php if ( '' != $this->thankyou_text ) : ?><p><?php echo wpautop( wptexturize( $this->thankyou_text ) ); ?></p><?php endif; ?>
-				<?php
+				if ( $this->thankyou_text ) {
+					echo '<p>' . wpautop( wptexturize( $this->thankyou_text ) ) . '</p>';
+				}
 			}
 
 			/**
@@ -621,10 +623,11 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				if ( 'mpay24' !== $order->payment_method ) {
 					return;
 				}
+				if ( !$this->email_text ) {
+					return;
+				}
 
-				?>
-				<?php if ( '' != $this->email_text ) : ?><p><?php echo wpautop( wptexturize( $this->email_text ) ); ?></p><?php endif; ?>
-				<?php
+				echo '<p>' . wpautop( wptexturize( $this->email_text ) ) . '</p>';
 			}
 
 			/**
