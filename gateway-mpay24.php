@@ -639,12 +639,19 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				/** @var PaymentResponse */
 				$result = $shop->pay();
 
-				if ( $result->getGeneralResponse()->getStatus() != 'OK' ) {
-					wc_add_notice( $result->getGeneralResponse()->getReturnCode(), 'error' );
-					return array(
-						'result'   => 'fail',
-						'redirect' => ''
-					);
+				if ( $result->getGeneralResponse()->getStatus() !== 'OK' ) {
+					// This notice is shown to the user, so it shouldn't be too technical.
+					wc_add_notice( __('Payment gateway is experiencing problems. Please, try again later.', 'wc-mpay24'), 'error' );
+					// Log the incident, if we're in debug mode.
+					if ( $debug ) {
+						$this->log->add('mpay24', sprintf(
+							'Failed to process payment for order ID %d: mPAY24 gateway responded with code "%s" and status "%s".',
+							$order_id,
+							$result->getGeneralResponse()->getReturnCode(),
+							$result->getGeneralResponse()->getStatus()
+						));
+					}
+					return;
 				}
 
 				// open payment page

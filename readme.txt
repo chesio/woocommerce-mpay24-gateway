@@ -77,8 +77,9 @@ Maybe you have an .htaccess protection (HTTP authentication) on your wordpress s
 
 = 2.1.0.beta =
 * Feature - New option for Language setting: "Use WordPress locale". With this option on, payment page language corresponds to WordPress locale. This option works nicely with multilanguage plugins that work by switching WordPress locale (for example Polylang).
-* Tweak - Added support for Danish, Finnish, Greek, Norwegian, Swedish and Ukrainian
-* Fix - Retrieve raw (unescaped) cancel order URL for mPAY24 MDXI-XML
+* Tweak - Added support for Danish, Finnish, Greek, Norwegian, Swedish and Ukrainian.
+* Tweak - At checkout, show more user friendly error message to the user if request to gateway fails.
+* Fix - Retrieve raw (unescaped) cancel order URL for mPAY24 MDXI-XML.
 * Other - Minor code cleanup.
 
 = 2.0.0 - 2016-10-20 =
