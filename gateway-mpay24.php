@@ -777,7 +777,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 			 * @return void
 			 */
 			public function successful_request( $posted ) {
-				global $wpdb;
+				global $wpdb, $woocommerce;
 
 				if ( empty($posted['TID']) ) {
 					// Should not happen, but better safe than sorry.
@@ -823,7 +823,7 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 					case 'error':
 						// Order failed
 						$order->update_status( 'failed', sprintf( __( 'Payment %s via mPAY24.', 'wc-mpay24' ), $tstatus ) );
-						if( version_compare( $woocommerce->version, '2.1', '>=' ) ) {
+						if ( version_compare( $woocommerce->version, '2.1', '>=' ) ) {
 							wc_add_notice( __( 'Payment failed via mPAY24.', 'wc-mpay24' ), 'error' );
 						}
 						break;
