@@ -619,9 +619,17 @@ if (in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 				$shop->setCustomer( $customer_name );
 				$shop->setCustomerId( $order->user_id );
 
-				$shop->setSuccessUrl( $this->get_return_url( $order ) ); // thank you page
-				$shop->setErrorUrl( $order->get_cancel_order_url_raw() ); // failed orders will also be marked as cancelled
+				// Redirect to "thank you" page even in case of error, because
+				// the order-received endpoint is not a mere "Thank you" page.
+				// If order status if "failed", it will display proper message
+				// and offer an option to repeat the payment - I believe this
+				// is much better than canceling the order right away.
+				$return_url = $this->get_return_url( $order );
+				$shop->setSuccessUrl( $return_url );
+				$shop->setErrorUrl( $return_url );
+				// If customer decides to cancel the payment, he/she lands here:
 				$shop->setCancelUrl( $order->get_cancel_order_url_raw() );
+				// URL for transaction callbacks from mPAY24
 				$shop->setConfirmUrl( $this->protect_url( $this->notify_url ) );
 
 				$shop->setPageBgColor( $this->page_bg_color );
