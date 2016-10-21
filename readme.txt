@@ -3,7 +3,7 @@
 Contributors: datenwerk, chesio
 Tags: woocommerce, gateway, mpay24
 Requires at least: 3.5
-Tested up to: 4.5.4
+Tested up to: 4.6.1
 Stable tag: 2.1.0.beta
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html

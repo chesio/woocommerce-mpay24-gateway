@@ -1,13 +1,14 @@
 <?php
 /*
-	Plugin Name: WooCommerce mPAY24 Gateway
-	Plugin URI: http://wordpress.org/plugins/woocommerce-mpay24-gateway/
-	Description: Add mPAY24 Payment Gateway to WooCommerce Plugin
-	Version: 2.1.0.beta
-	Author: datenwerk innovationsagentur GmbH
-	Author URI: http://www.datenwerk.at
-	Requires at least: 3.5
-	Tested up to: 4.5.4
+Plugin Name: WooCommerce mPAY24 Gateway
+Plugin URI: http://wordpress.org/plugins/woocommerce-mpay24-gateway/
+Description: Add mPAY24 Payment Gateway to WooCommerce plugin
+Version: 2.1.0.beta
+Author: datenwerk innovationsagentur GmbH
+Author URI: http://www.datenwerk.at
+Text Domain: wc-mpay24
+Requires at least: 3.5
+Tested up to: 4.6.1
 */
 
 // Exit if accessed directly
